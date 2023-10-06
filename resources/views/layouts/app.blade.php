@@ -46,7 +46,8 @@
         </header>
 
         @yield('content')
-        <footer class="bg-blue-900 fixed bottom-0 right-0 left-0">
+        {{-- <footer class="bg-blue-900 fixed bottom-0 right-0 left-0 mt-100"> --}}
+        <footer class="bg-blue-900  mt-100">
             <div class="container mx-auto flex justify-between items-center px-6">
                 {{-- list url --}}
                 <ul class="flex list-none flex-col  capitalize ">
