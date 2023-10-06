@@ -48,12 +48,22 @@
         @yield('content')
         <footer class="bg-blue-900 fixed bottom-0 right-0 left-0">
             <div class="container mx-auto flex justify-between items-center px-6">
-                <ul class="flex list-none flex-col">
-                    <h3 class="text-gray-200 py-2">Pages</h3>
+                {{-- list url --}}
+                <ul class="flex list-none flex-col  capitalize ">
+                    <h3 class="text-gray-200 py-2 font-bold">Pages</h3>
                     <li class="text-gray-400 hover:text-gray-200 py-1 transition delay-75  duration-300 ease-in-out" ><a href="{{route('home')}}">Home</a></li>
                     <li  class="text-gray-400 hover:text-gray-200 py-1 transition delay-75  duration-300 ease-in-out"><a href="">About</a></li>
                     <li  class="text-gray-400 hover:text-gray-200 py-1 transition delay-75 duration-300 ease-in-out"><a href="">Contact</a></li>
                 </ul>
+                {{-- end list url --}}
+                {{-- list url --}}
+                <ul class="flex list-none flex-col capitalize">
+                    <h3 class="text-gray-200 py-2 font-bold	  ">Lastate Posts</h3>
+                    <li class="text-gray-400 hover:text-gray-200 py-1 transition delay-75  duration-300 ease-in-out" ><a href="{{route('home')}}">how can make</a></li>
+                    <li  class="text-gray-400 hover:text-gray-200 py-1 transition delay-75  duration-300 ease-in-out"><a href="">Post 2 here</a></li>
+                    <li  class="text-gray-400 hover:text-gray-200 py-1 transition delay-75 duration-300 ease-in-out"><a href="">Post 3 here</a></li>
+                </ul>
+                {{-- end list url --}}
             </div>
         </footer>
     </div>
