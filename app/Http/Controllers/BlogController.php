@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 use App\Models\post;
+use Auth;
 class BlogController extends Controller
 {
     /**
@@ -36,8 +37,25 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'post_title'=>'required|min:8|string',
+            'post_des'=>'required|min:8|string',
+            'post_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $slug = Str::of($request->post_title)->slug('_');// get slug for post 
+        $new_image_name=uniqid().$slug.'.'.$request->post_img->extension(); // get new name for img
+        $request->post_img->move(public_path('images'), $new_image_name);// move img to files
+        $user_id=auth()->user()->id;
+        // save to db
+        $post =new post();
+        $post->slug =$slug;
+        $post->title =$request->input('post_title');
+        $post->des =$request->input('post_des');
+        $post->img_path= $new_image_name;
+        $post->user_id =$user_id;
+        $post->save();
         
-        dd($request);
+        return $this->index();
     }
 
     /**
