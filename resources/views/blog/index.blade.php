@@ -1,5 +1,15 @@
 @extends('layouts.app')
 @section('content')
+@if (Auth::check())
+<div class="container mx-auto py-10">
+    <a href="{{route("blog.create")}}" 
+    class="rounded-lg   bg-green-700  text-2xl  text-gray-100 py-2 px-3  font-blod uppercase place-self-start hover:bg-gray-500"
+    >
+        Add New Post
+    </a>
+</div>
+
+@endif
     @foreach ($posts as $post)
         {{-- post --}}
         <div class="post container  sm:grid  grid-cols-2 gap-16 mx-auto p-15 m-5 ">
