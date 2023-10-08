@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\post;
+use Illuminate\Support\Facades\DB;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -14,11 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        DB::table('posts')->insert([
+            'slug' => 'how-to-make-1',
+            'title' => 'how can make 1',
+            'img_path' => 'https://picsum.photos/id/50/960/620',
+            'des' =>   "Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                            Natus odio laboriosam nulla dolore non debitis nobis dolorum, e
+                            xpedita dignissimos numquam, dolores, dolorem molestiae",
+            'user_id'=>'1'
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        ]);
     }
 }
