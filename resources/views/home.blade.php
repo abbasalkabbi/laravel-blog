@@ -35,7 +35,7 @@
         <div class="content-post flex flex-col items-left justify-center m-10 sm:m-0">
             <h2 class="title-post uppercase text-gray-700 font-bold text-4xl" >{{$post->title}}</h2>
             <a class="title-post  text-gray-400 text-lg italic py-4 hover:text-gray-700	"   href="/user/{{$post->user->id}}">By:{{$post->user->name}}</a>
-            <span class="title-post  text-gray-400 text-lg italic  hover:text-gray-700	"  >{{$post->created_at->diffForHumans();}}   </span>
+            <span class="title-post  text-gray-400 text-lg italic 	"  >{{$post->created_at->diffForHumans();}}   </span>
             <p class="text-gray-500 text-sm font-bold py-5 leading-relaxed">
                 {{substr($post->des, 0, 150);}}...
             </p>
