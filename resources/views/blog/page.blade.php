@@ -31,7 +31,7 @@
     </div>
     {{-- des end --}}
     {{-- edit  --}}
-    @if (Auth::user()->id == $post->user_id)
+    @if (Auth::user() && Auth::user()->id == $post->user_id)
         <div class="container mx-auto">
             <a href="{{route("blog.edit",$post->slug)}}"
                 class="
