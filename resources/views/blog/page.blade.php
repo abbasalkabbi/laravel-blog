@@ -35,11 +35,24 @@
         <div class="container mx-auto">
             <a href="{{route("blog.edit",$post->slug)}}"
                 class="
-                bg-green-700 hover:bg-gray-500 text-gray-100 
+                bg-green-700 hover:bg-gray-500 text-gray-100 hover:text-green-700 border border-green-700	
                 py-4  px-4 mt-6 mb-6 inline-block rounded-lg font-blod uppercase   text-2xl
                 place-self-start
                 "
             >Edit Post</a>
+            <a href="{{route("blog.edit",$post->slug)}}"
+                class="
+                bg-red-700 hover:bg-gray-500 text-gray-100 hover:text-red-700 border border-red-700	
+                py-4  px-4 mt-6 mb-6 inline-block rounded-lg font-blod uppercase   text-2xl
+                place-self-start
+                "
+                onclick="event.preventDefault();
+                document.getElementById('delete-form').submit();"
+            >Delete Post</a>
+            <form id="delete-form" action="{{ route('blog.destroy',$post->slug) }}" method="POST" class="hidden">
+                @csrf
+                @method("DELETE")
+            </form>
         </div>
         
     @endif

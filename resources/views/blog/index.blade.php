@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+@if(session()->has('massage'))
+<div class=" container font-regular relative mb-4 block w-full rounded-lg bg-green-500 p-4 text-base leading-5 text-white opacity-100 mx-auto mt-5">
+    A success Update Post
+</div>
+@endif
+
 @if (Auth::check())
 <div class="container mx-auto py-10">
     <a href="{{route("blog.create")}}" 

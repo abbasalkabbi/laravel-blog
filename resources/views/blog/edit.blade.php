@@ -7,10 +7,11 @@
             body {background:white !important;}
         </style>
     {{-- form --}} 
-    <form  action="{{route('blog.store')}}" method="POST" enctype="multipart/form-data"
+    <form  action="{{route('blog.update',$post->slug)}}" method="POST" enctype="multipart/form-data"
     class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl"
     >
     @csrf
+    @method("PUT")
         <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellcheck="false" placeholder="Title" type="text" name="post_title" value="{{$post->title}}">
 
         <textarea class="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none" spellcheck="false" placeholder="Describe everything about this post here"  

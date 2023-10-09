@@ -97,9 +97,39 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        // if has image
+        if($request->hasFile("post_img")){
+            $request->validate([
+                'post_title'=>'required|min:8|string',
+                'post_des'=>'required|min:8|string',
+                'post_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $new_image_name=uniqid().$slug.'.'.$request->post_img->extension(); // get new name for img
+            $request->post_img->move(public_path('images'), $new_image_name);// move img to files
+            // save to db
+            post::Where('slug',$slug)->update([
+                'title'=> $request->input('post_title'),
+                'des'=> $request->input('post_des'),
+                'img_path'=>$new_image_name,
+                ]
+            );
+            return redirect("blog")->with(['massage'=>"update Post"]);
+        }else{
+            $request->validate([
+                'post_title'=>'required|min:8|string',
+                'post_des'=>'required|min:8|string',
+            ]);
+            // save to db
+            post::Where('slug',$slug)->update([
+                'title'=> $request->input('post_title'),
+                'des'=> $request->input('post_des'),
+                ]
+            );
+            return redirect("blog")->with(['massage'=>"update Post"]);
+        }
+        // end if has image
     }
 
     /**
@@ -108,8 +138,10 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+
+        post::Where('slug',$slug)->delete();
+        return $this->index();
     }
 }
