@@ -1,6 +1,20 @@
 @extends("layouts.app")
 @section('content')
 <div>
+    {{-- alert --}}
+    @if ($errors->any())
+    <div  role="alert" class="alert alert-danger container mx-auto mt-6">
+        <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+            Input Wrong
+        </div>
+        <ul class="border border-t-0 border-red-400 rounded-b bg-red-100 px-6 py-3 text-red-700 list-decimal ">
+            @foreach ($errors->all() as $error)
+                <li class="">{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    {{-- alert End --}}
     <div class="heading text-center font-bold text-2xl m-5 text-gray-800">New Post</div>
         <style>
             body {background:white !important;}
@@ -10,6 +24,7 @@
     class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl"
     >
     @csrf
+    
         <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellcheck="false" placeholder="Title" type="text" name="post_title">
 
         <textarea class="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none" spellcheck="false" placeholder="Describe everything about this post here" 
