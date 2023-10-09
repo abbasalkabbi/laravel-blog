@@ -30,5 +30,19 @@
         </p>
     </div>
     {{-- des end --}}
+    {{-- edit  --}}
+    @if (Auth::user()->id == $post->user_id)
+        <div class="container mx-auto">
+            <a href="{{route("blog.edit",$post->slug)}}"
+                class="
+                bg-green-700 hover:bg-gray-500 text-gray-100 
+                py-4  px-4 mt-6 mb-6 inline-block rounded-lg font-blod uppercase   text-2xl
+                place-self-start
+                "
+            >Edit Post</a>
+        </div>
+        
+    @endif
+    {{-- end edit --}}
 </div>
 @endsection

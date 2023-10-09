@@ -67,13 +67,11 @@ class BlogController extends Controller
     public function show($slug)
     {
         $post=post::where("slug",$slug)->first();
-       
         if($post  == null){
             abort(404);
         }else{
             return view('blog.page')->with('post',$post);
         }
-         
     }
 
     /**
@@ -82,9 +80,14 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $post=post::where("slug",$slug)->first();
+        if($post  == null){
+            abort(404);
+        }else{
+            return view('blog.edit')->with('post',$post);
+        }
     }
 
     /**
