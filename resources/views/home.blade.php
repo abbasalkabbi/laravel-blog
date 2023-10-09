@@ -28,7 +28,7 @@
     <div class="post container  sm:grid  grid-cols-2 gap-16 mx-auto p-15 m-5 ">
         {{-- img --}} 
         <div class="img-post mx-2 md:mx-0">
-            <img src="{{$post->img_path}}" alt="" class="sm:rounded-lg">
+            <img src="images/{{$post->img_path}}" alt="" class="sm:rounded-lg">
         </div>
         {{-- img End  --}}
         {{-- content-post --}}

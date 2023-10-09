@@ -20,7 +20,7 @@
     {{-- end title --}}
     {{-- img --}}
     <div class="img container mx-auto  ">
-        <img src="{{$post->img_path}}" alt=""  class="mt-4" style="width: 100%">
+        <img src="../images/{{$post->img_path}}" alt=""  class="mt-4" style="width: 100%">
     </div>
     {{-- img End --}}
     {{-- des --}}

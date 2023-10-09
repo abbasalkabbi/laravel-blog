@@ -15,9 +15,10 @@
         <div class="post container  sm:grid  grid-cols-2 gap-16 mx-auto p-15 m-5 ">
             {{-- img --}} 
             <div class="img-post mx-2 md:mx-0">
-                <img src="{{$post->img_path}}" alt="" class="sm:rounded-lg">
+                <img src="images/{{$post->img_path}}" alt="" class="sm:rounded-lg">
             </div>
             {{-- img End  --}}
+
             {{-- content-post --}}
             <div class="content-post flex flex-col items-left justify-center m-10 sm:m-0">
                 <h2 class="title-post uppercase text-gray-700 font-bold text-4xl" >{{$post->title}}</h2>
@@ -26,7 +27,7 @@
                 <p class="text-gray-500 text-sm font-bold py-5 leading-relaxed">
                     {{substr($post->des, 0, 150);}}...
                 </p>
-                <a href="/blog/{{$post->slug}}" class="rounded-lg   bg-gray-700  text-2xl  text-gray-100 py-2 px-3  font-blod uppercase place-self-start hover:bg-gray-500">
+                <a href="{{route("blog.show",$post->slug)}}" class="rounded-lg   bg-gray-700  text-2xl  text-gray-100 py-2 px-3  font-blod uppercase place-self-start hover:bg-gray-500">
                     read more
                 </a>
             </div>
