@@ -41,5 +41,11 @@
         </div>
         {{-- end post --}}
         <div class="border-b-2 border-gray-400	container mx-auto mb-2"></div>
+        
     @endforeach
+    {{-- pages link --}}
+    <div class="container mx-auto my-5">
+        {{ $posts->links() }}
+    </div>
+{{-- pages link End  --}}
 @endsection

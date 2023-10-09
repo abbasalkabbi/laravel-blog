@@ -15,7 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts=post::all();
+        $posts=post::simplePaginate(2);
         return view('blog.index',['posts'=>$posts]);
     }
 

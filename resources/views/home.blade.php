@@ -46,7 +46,7 @@
         {{--End content-post --}} 
     </div>
     {{-- end post --}}
-    <div class="border-b-2 border-gray-400	container mx-auto mb-2">hi</div>
+    <div class="border-b-2 border-gray-400	container mx-auto mb-2"></div>
 @endforeach
 </div>
 {{-- from my blog End --}}
