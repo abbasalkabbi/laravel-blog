@@ -14,15 +14,13 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        // $users=User::simplePaginate(2);
-        $users=User::all();
-        // dd($users->post->title);
-        $post_count = User::find(1)->post->count();
+        $users=User::simplePaginate(1);
         $data = array();
 
         foreach($users as $user ){
             array_push($data, 
             [
+                'id' =>$user->id,
                 'name' =>$user->name,
                 'email' =>$user->email,
                 'post_count'=> User::find($user->id)->post->count(),
@@ -30,7 +28,7 @@ class ProfileController extends Controller
         );
         }
         // $users=$data;
-        return view("profile.index",['users'=>$data]);
+        return view("profile.index",['users'=>$data,'link'=>$users]);
     }
 
     /**
