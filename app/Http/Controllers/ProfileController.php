@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\post;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 class ProfileController extends Controller
 {
     /**
@@ -78,7 +78,12 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=User::where("id",$id)->first();
+        if($user  == null){
+            abort(404);
+        }else{
+            return view('profile.edit')->with('user',$user);
+        }
     }
 
     /**
@@ -90,7 +95,26 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // change name
+        if ($request->has('name')) {
+            $request->validate([
+                'name' => 'required|min:8|max:255',
+            ]);
+            User::Where('id',$id)->update([
+                'name'=>$request->input('name'),
+            ]);
+            return redirect("profile/$id/edit")->with(["staus"=>true,'message'=>"Update Name To {$request->input('name')}"]);
+        }
+        // end change name
+        if ($request->has('password')) {
+            $request->validate([
+                'password' => 'required|min:8|max:255',
+            ]);
+            User::Where('id',$id)->update([
+                'password'=> Hash::make($request->input('password')),
+            ]);
+            return redirect("profile/$id/edit")->with(["staus"=>true,'message'=>"Update password To {$request->input('password')}"]);
+        }
     }
 
     /**

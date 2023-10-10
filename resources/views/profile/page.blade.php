@@ -29,7 +29,7 @@
                         </tr>
                     </tbody></table>
                     @if(Auth::user())
-                    <a href="{{route("blog.edit",$user->id)}}" class="rounded-lg  mt-15 bg-green-700  text-2xl  text-gray-100 py-2 px-3  font-blod uppercase place-self-start hover:bg-green-500">
+                    <a href="{{route("profile.edit",$user->id)}}" class="rounded-lg  mt-15 bg-green-700  text-2xl  text-gray-100 py-2 px-3  font-blod uppercase place-self-start hover:bg-green-500">
                         Edit
                     </a>
                     @endif
