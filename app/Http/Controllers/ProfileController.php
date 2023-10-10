@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\post;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,20 +16,21 @@ class ProfileController extends Controller
     public function index()
     {
         $users=User::simplePaginate(1);
-        $data = array();
+        // $data = array();
 
-        foreach($users as $user ){
-            array_push($data, 
-            [
-                'id' =>$user->id,
-                'name' =>$user->name,
-                'email' =>$user->email,
-                'post_count'=> User::find($user->id)->post->count(),
-            ]
-        );
-        }
-        // $users=$data;
-        return view("profile.index",['users'=>$data,'link'=>$users]);
+        // foreach($users as $user ){
+        //     array_push($data, 
+        //     [
+        //         'id' =>$user->id,
+        //         'name' =>$user->name,
+        //         'email' =>$user->email,
+        //         'post_count'=> User::find($user->id)->post->count(),
+        //     ]
+        // );
+        // }
+        // // $users=$data;
+        // return view("profile.index",['users'=>$data,'link'=>$users]);
+        return view("profile.index",['users'=>$users]);
     }
 
     /**
@@ -60,7 +62,12 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        $user=User::where("id",$id)->first();
+        if($user  == null){
+            abort(404);
+        }else{
+            return view('profile.page')->with('user',$user);
+        }
     }
 
     /**
