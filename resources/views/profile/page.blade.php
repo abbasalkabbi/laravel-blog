@@ -2,12 +2,12 @@
 @section("content")
 <div>
     <h1 class="text-center">Profile</h1>
-    <div class="flex   w-full container mx-auto ">
+    <div class="   w-screen container mx-auto ">
         {{-- user --}}
-        <div class="max-w-xs w-full">
+        <div class="w-full" >
             <div class="bg-white shadow-xl rounded-lg py-3 mx-2">
                 <div class="photo-wrapper p-2">
-                    <img class="w-100 h-32 rounded-full mx-auto" src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=261&d=mp" alt="John Doe">
+                    <img class="w-100 h-32  mx-auto" src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=261&d=mp" alt="John Doe">
                 </div>
                 <div class="p-2">
                     <h3 class="text-center text-2xl text-gray-900 font-medium leading-8 ">{{$user['name']}}</h3>
@@ -28,7 +28,11 @@
                             <td class="px-2 py-2 text-lg">{{$user['email']}}</td>
                         </tr>
                     </tbody></table>
-        
+                    @if(Auth::user())
+                    <a href="{{route("blog.edit",$user->id)}}" class="rounded-lg  mt-15 bg-green-700  text-2xl  text-gray-100 py-2 px-3  font-blod uppercase place-self-start hover:bg-green-500">
+                        Edit
+                    </a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -53,7 +57,7 @@
             {{-- content-post --}}
             <div class="content-post flex flex-col items-left justify-center m-10 sm:m-0">
                 <h2 class="title-post uppercase text-gray-700 font-bold text-4xl" >{{$post->title}}</h2>
-                <a class="title-post  text-gray-400 text-lg italic py-4 hover:text-gray-700	"   href="/user/{{$post->user->id}}">By:{{$post->user->name}}</a>
+                <a class="title-post  text-gray-400 text-lg italic py-4 hover:text-gray-700	"   href="{{route('profile.show',$post->user->id)}}">By:{{$post->user->name}}</a>
                 <span class="title-post  text-gray-400 text-lg italic 	"  >{{$post->created_at->diffForHumans();}}   </span>
                 <p class="text-gray-500 text-sm font-bold py-5 leading-relaxed">
                     {{substr($post->des, 0, 150);}}...

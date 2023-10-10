@@ -3,7 +3,7 @@
 <div class="bg-gray-100">
     {{-- authoe --}}
     <div class="author container mx-auto   flex justify-between items-center px-6 py-6" >
-        <a class="capitalize  italic text-gray-500  text-lg font-semibold hover:text-gray-700 " href="/user/{{$post->user->id}}">
+        <a class="capitalize  italic text-gray-500  text-lg font-semibold hover:text-gray-700 "  href="{{route('profile.show',$post->user->id)}}">
             By:{{$post->user->name}}
         </a>
         <span class="capitalize  italic text-gray-500  text-lg font-semibold ">
