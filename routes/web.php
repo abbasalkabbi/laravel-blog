@@ -3,6 +3,8 @@
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +18,7 @@ use App\Http\Controllers\BlogController;
 
 Route::get('/',[PagesController::class,'index'])->name('home');
 Route::resource('/blog', BlogController::class);
+Route::resource('/profile', ProfileController::class);
 Auth::routes();
 
 
