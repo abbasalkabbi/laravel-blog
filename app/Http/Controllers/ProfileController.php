@@ -106,6 +106,7 @@ class ProfileController extends Controller
             return redirect("profile/$id/edit")->with(["staus"=>true,'message'=>"Update Name To {$request->input('name')}"]);
         }
         // end change name
+        // change password
         if ($request->has('password')) {
             $request->validate([
                 'password' => 'required|min:8|max:255',
@@ -115,6 +116,20 @@ class ProfileController extends Controller
             ]);
             return redirect("profile/$id/edit")->with(["staus"=>true,'message'=>"Update password To {$request->input('password')}"]);
         }
+        // end change password
+        // change img 
+        if($request->hasFile('img')){
+            $request->validate([
+                'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $new_image_name=uniqid().'.'.$request->img->extension(); // get new name for img
+            $request->img->move(public_path('avatar'), $new_image_name);// move img to files
+            User::Where('id',$id)->update([
+                'avatar'=> $new_image_name,
+            ]);
+        }
+        // change img  End
+
     }
 
     /**

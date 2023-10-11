@@ -10,7 +10,7 @@
                     {{ __('Register') }}
                 </header>
 
-                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST"
+                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST"  enctype="multipart/form-data"
                     action="{{ route('register') }}">
                     @csrf
 
@@ -60,7 +60,6 @@
                         </p>
                         @enderror
                     </div>
-
                     <div class="flex flex-wrap">
                         <label for="password-confirm" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
                             {{ __('Confirm Password') }}:
@@ -69,7 +68,24 @@
                         <input id="password-confirm" type="password" class="form-input w-full"
                             name="password_confirmation" required autocomplete="new-password">
                     </div>
-
+                    <div class="flex flex-wrap">
+                        {{-- input img --}}
+                            <label  
+                            class="
+                            btn border border-indigo-500 py-4 px-4 font-bold cursor-pointer text-gray-100 bg-blue-500 capitalize w-40 text-center my-5
+                            hover:text-blue-500 hover:bg-gray-100
+                            "
+                            >
+                                <input type="file" hidden name="avatar">
+                                Add image 
+                            </label>
+                            {{-- input img --}}
+                            @error('avatar')
+                            <p class="text-red-500 text-xs italic mt-4">
+                                {{ $message }}
+                            </p>
+                            @enderror
+                        </div>
                     <div class="flex flex-wrap">
                         <button type="submit"
                             class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4">
