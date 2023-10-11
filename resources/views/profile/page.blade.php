@@ -7,7 +7,7 @@
         <div class="w-full" >
             <div class="bg-white shadow-xl rounded-lg py-3 mx-2">
                 <div class="photo-wrapper p-2">
-                    <img class="w-100 h-32  mx-auto" src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=261&d=mp" alt="John Doe">
+                    <img class="w-100 h-32  mx-auto" src="/avatars/{{$user->avatar}}" alt="John Doe">
                 </div>
                 <div class="p-2">
                     <h3 class="text-center text-2xl text-gray-900 font-medium leading-8 ">{{$user['name']}}</h3>

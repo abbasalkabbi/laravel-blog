@@ -127,6 +127,7 @@ class ProfileController extends Controller
             User::Where('id',$id)->update([
                 'avatar'=> $new_image_name,
             ]);
+            return redirect("profile/$id/edit")->with(["staus"=>true,'message'=>"Update Image "]);
         }
         // change img  End
 
