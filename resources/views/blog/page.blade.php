@@ -1,17 +1,47 @@
 @extends('layouts.app')
 @section('content')
 <div class="bg-gray-100">
-    {{-- authoe --}}
-    <div class="author container mx-auto   flex justify-between items-center px-6 py-6" >
-        <a class="capitalize  italic text-gray-500  text-lg font-semibold hover:text-gray-700 grid  grid-cols-2 w-fit	"  href="{{route('profile.show',$post->user->id)}}">
-            <img src="/avatars/{{$post->user->avatar}}"  alt="" class="rounded-full " style="width: 80px">
-            <ul class="flex flex-col -mx-4 justify-items-center mt-2">
-                <p> By:{{$post->user->name}}</p>
-                <p class=""> {{$post->created_at->diffForHumans();}} </p>
-            </ul>
-        </a>
+    <div class="grid grid-cols-2 container mx-auto">
+        {{-- authoe --}}
+        <div class="author flex justify-between items-center px-6 py-6" >
+            <a class="capitalize  italic text-gray-500  text-lg font-semibold hover:text-gray-700 grid  grid-cols-2 w-fit	"  href="{{route('profile.show',$post->user->id)}}">
+                <img src="/avatars/{{$post->user->avatar}}"  alt="" class="rounded-full " style="width: 80px">
+                <ul class="flex flex-col -mx-4 justify-items-center mt-2">
+                    <p> By:{{$post->user->name}}</p>
+                    <p class=""> {{$post->created_at->diffForHumans();}} </p>
+                </ul>
+            </a>
+        </div>
+        {{-- author End --}}
+        {{-- test --}}
+        {{-- test End  --}}
+        {{-- like and unlike --}}
+        <div class="like_unlike flex flex-col justify-end 	">
+            <div class="flex flex-row justify-end ">
+                <form action="{{route("blog.like",$post->id)}}"  method="POST" >
+                    
+                    <button type="submit"  
+                    class="bg-blue-900 font-blod uppercase text-3xl py-1	text-gray-100 w-40 	mx-1">
+                    @if ($post->isliked())
+                        liked
+                    @else
+                        like
+                    @endif
+                    </button>
+                </form>
+                <form action="{{route("blog.like",$post->id)}}"  method="POST" >
+                    <button type="submit"  
+                    class="bg-red-900 font-blod uppercase text-3xl py-1 	text-gray-100 w-40 mx-1"
+                    >unlike</button>
+                </form>
+            </div>
+            <div class="flex flex-row justify-end ">
+                <p class="font-blod text-3xl  uppercase mx-2">like:1</p>
+                <p class="font-blod text-3xl uppercase"> unlike:3</p>
+            </div>
+        </div>
+        {{-- like and unlike end --}}
     </div>
-    {{-- author End --}}
     {{-- title --}}
     <div class="title container mx-auto text-center capitalize ">
         <h1 class="text-4xl  font-serif tracking-wide  text-gray-700">

@@ -17,6 +17,7 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/',[PagesController::class,'index'])->name('home');
+Route::get('/blog/{id}/like', [BlogController::class,'like'])->name('blog.like');
 Route::resource('/blog', BlogController::class);
 Route::resource('/profile', ProfileController::class);
 Auth::routes();

@@ -2,39 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\post;
 use Auth;
 class BlogController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $posts=post::simplePaginate(2);
         return view('blog.index',['posts'=>$posts]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view("blog.create");
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -57,16 +41,10 @@ class BlogController extends Controller
         
         return $this->index();
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($slug)
     {
         $post=post::where("slug",$slug)->first();
+        
         if($post  == null){
             abort(404);
         }else{
@@ -74,12 +52,6 @@ class BlogController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($slug)
     {
         $post=post::where("slug",$slug)->first();
@@ -90,13 +62,6 @@ class BlogController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $slug)
     {
         // if has image
@@ -132,16 +97,17 @@ class BlogController extends Controller
         // end if has image
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($slug)
     {
 
         post::Where('slug',$slug)->delete();
         return $this->index();
+    }
+    public function like($id){
+        
+        like::create([
+            'user_id'=>auth()->user()->id,
+            'post_id'=>$id,
+        ]);
     }
 }
