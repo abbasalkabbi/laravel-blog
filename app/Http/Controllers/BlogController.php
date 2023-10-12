@@ -6,6 +6,7 @@ use App\Models\like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\post;
+use App\Models\unlike;
 use Auth;
 class BlogController extends Controller
 {
@@ -110,9 +111,24 @@ class BlogController extends Controller
                 'user_id'=>auth()->user()->id,
                 'post_id'=>$id,
             ]);
+            unlike::Where([['user_id',auth()->user()->id],['post_id',$id]])->first()->delete();
             return redirect()->back();
         }else{
             $like->delete();
+            return redirect()->back();
+        }
+    }
+    public function unlike($id){
+        $unlike=unlike::Where([['user_id',auth()->user()->id],['post_id',$id]])->first();
+        if($unlike == null ){
+            unlike::create([
+                'user_id'=>auth()->user()->id,
+                'post_id'=>$id,
+            ]);
+            like::Where([['user_id',auth()->user()->id],['post_id',$id]])->first()->delete();
+            return redirect()->back();
+        }else{
+            $unlike->delete();
             return redirect()->back();
         }
     }

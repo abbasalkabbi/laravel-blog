@@ -18,6 +18,7 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/',[PagesController::class,'index'])->name('home');
 Route::post('/blog/{id}/like', [BlogController::class,'like'])->name('blog.like');
+Route::post('/blog/{id}/unlike', [BlogController::class,'unlike'])->name('blog.unlike');
 Route::resource('/blog', BlogController::class);
 Route::resource('/profile', ProfileController::class);
 Auth::routes();

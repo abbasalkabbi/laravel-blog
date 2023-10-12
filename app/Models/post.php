@@ -23,4 +23,15 @@ class post extends Model
     public function like(){
         return $this->hasMany(like::class);
     }
+    function isunliked(){
+        $unlike=unlike::Where([['user_id',auth()->user()->id],['post_id',$this->id]])->first();
+        if($unlike == null ){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    public function unlike(){
+        return $this->hasMany(unlike::class);
+    }
 }

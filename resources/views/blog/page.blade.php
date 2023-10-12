@@ -29,15 +29,22 @@
                     @endif
                     </button>
                 </form>
-                <form action="{{route("blog.like",$post->id)}}"  method="POST" >
+                <form action="{{route("blog.unlike",$post->id)}}"  method="POST" >
+                    @csrf
                     <button type="submit"  
                     class="bg-red-900 font-blod uppercase text-3xl py-1 	text-gray-100 w-40 mx-1"
-                    >unlike</button>
+                    >
+                    @if ($post->isunliked())
+                        unliked
+                    @else
+                        unlike
+                    @endif
+                </button>
                 </form>
             </div>
             <div class="flex flex-row justify-end ">
-                <p class="font-blod text-3xl  uppercase mx-2">like:1</p>
-                <p class="font-blod text-3xl uppercase"> unlike:3</p>
+                <p class="font-blod text-3xl  uppercase mx-2">like:{{$post->like->count()}}</p>
+                <p class="font-blod text-3xl uppercase"> unlike:{{$post->unlike->count()}}</p>
             </div>
         </div>
         {{-- like and unlike end --}}
