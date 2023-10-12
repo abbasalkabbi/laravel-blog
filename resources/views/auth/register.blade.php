@@ -28,7 +28,22 @@
                         </p>
                         @enderror
                     </div>
+                    {{-- job-title --}}
+                    <div class="flex flex-wrap">
+                        <label for="job_title" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                            {{ __('Job Title') }}:
+                        </label>
 
+                        <input id="job_title" type="text" class="form-input w-full @error('job_title')  border-red-500 @enderror"
+                            name="job_title" value="{{ old('job_title') }}" required autocomplete="job_title" autofocus>
+
+                        @error('job_title')
+                        <p class="text-red-500 text-xs italic mt-4">
+                            {{ $message }}
+                        </p>
+                        @enderror
+                    </div>
+                    {{-- job-title End --}}
                     <div class="flex flex-wrap">
                         <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
                             {{ __('E-Mail Address') }}:
