@@ -20,8 +20,8 @@
                             <td class="px-2 py-2 text-lg">{{$user->post()->count()}} </td>
                         </tr>
                         <tr>
-                            <td class="px-2 py-2 text-gray-500 font-semibold text-lg">Phone</td>
-                            <td class="px-2 py-2 text-lg">+977 9955221114</td>
+                            <td class="px-2 py-2 text-gray-500 font-semibold text-lg">created Since</td>
+                            <td class="px-2 py-2 text-lg">{{$user->created_at->diffForHumans();}} </td>
                         </tr>
                         <tr>
                             <td class="px-2 py-2 text-gray-500 font-semibold  text-lg">Email</td>
