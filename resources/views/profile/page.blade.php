@@ -28,7 +28,7 @@
                             <td class="px-2 py-2 text-lg">{{$user['email']}}</td>
                         </tr>
                     </tbody></table>
-                    @if(Auth::user())
+                    @if(Auth::user() &&  Auth::user()->id == $user->id)
                     <a href="{{route("profile.edit",$user->id)}}" class="rounded-lg  mt-15 bg-green-700  text-2xl  text-gray-100 py-2 px-3  font-blod uppercase place-self-start hover:bg-green-500">
                         Edit
                     </a>
