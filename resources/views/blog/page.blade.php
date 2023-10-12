@@ -18,6 +18,7 @@
         {{-- like and unlike --}}
         <div class="like_unlike flex flex-col justify-end 	">
             <div class="flex flex-row justify-end ">
+                @if(Auth::check())
                 <form action="{{route("blog.like",$post->id)}}"  method="POST" >
                     @csrf
                     <button type="submit"  
@@ -41,6 +42,8 @@
                     @endif
                 </button>
                 </form>
+                @endif
+                
             </div>
             <div class="flex flex-row justify-end ">
                 <p class="font-blod text-3xl  uppercase mx-2">like:{{$post->like->count()}}</p>

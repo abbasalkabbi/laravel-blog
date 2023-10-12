@@ -106,12 +106,15 @@ class BlogController extends Controller
     }
     public function like($id){
         $like=like::Where([['user_id',auth()->user()->id],['post_id',$id]])->first();
+        $unlike=unlike::Where([['user_id',auth()->user()->id],['post_id',$id]])->first();
         if($like == null ){
             like::create([
                 'user_id'=>auth()->user()->id,
                 'post_id'=>$id,
             ]);
-            unlike::Where([['user_id',auth()->user()->id],['post_id',$id]])->first()->delete();
+            if($unlike != null ){
+                $unlike->delete();
+            }
             return redirect()->back();
         }else{
             $like->delete();
@@ -120,12 +123,15 @@ class BlogController extends Controller
     }
     public function unlike($id){
         $unlike=unlike::Where([['user_id',auth()->user()->id],['post_id',$id]])->first();
+        $like=like::Where([['user_id',auth()->user()->id],['post_id',$id]])->first();
         if($unlike == null ){
             unlike::create([
                 'user_id'=>auth()->user()->id,
                 'post_id'=>$id,
             ]);
-            like::Where([['user_id',auth()->user()->id],['post_id',$id]])->first()->delete();
+            if($like != null ){
+                $like->delete();
+            }
             return redirect()->back();
         }else{
             $unlike->delete();
