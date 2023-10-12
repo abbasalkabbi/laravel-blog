@@ -3,12 +3,13 @@
 <div class="bg-gray-100">
     {{-- authoe --}}
     <div class="author container mx-auto   flex justify-between items-center px-6 py-6" >
-        <a class="capitalize  italic text-gray-500  text-lg font-semibold hover:text-gray-700 "  href="{{route('profile.show',$post->user->id)}}">
-            By:{{$post->user->name}}
+        <a class="capitalize  italic text-gray-500  text-lg font-semibold hover:text-gray-700 grid  grid-cols-2 w-fit	"  href="{{route('profile.show',$post->user->id)}}">
+            <img src="/avatars/{{$post->user->avatar}}"  alt="" class="rounded-full " style="width: 80px">
+            <ul class="flex flex-col -mx-4 justify-items-center mt-2">
+                <p> By:{{$post->user->name}}</p>
+                <p class=""> {{$post->created_at->diffForHumans();}} </p>
+            </ul>
         </a>
-        <span class="capitalize  italic text-gray-500  text-lg font-semibold ">
-            {{$post->created_at->diffForHumans();}} 
-        </span>
     </div>
     {{-- author End --}}
     {{-- title --}}
