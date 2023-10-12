@@ -106,6 +106,17 @@ class ProfileController extends Controller
             return redirect("profile/$id/edit")->with(["staus"=>true,'message'=>"Update Name To {$request->input('name')}"]);
         }
         // end change name
+        // change job_title
+        if ($request->has('job_title')) {
+            $request->validate([
+                'job_title' => 'required|min:8|max:255',
+            ]);
+            User::Where('id',$id)->update([
+                'job_title'=>$request->input('job_title'),
+            ]);
+            return redirect("profile/$id/edit")->with(["staus"=>true,'message'=>"Update Job Title To {$request->input('job_title')}"]);
+        }
+        // end change job_title
         // change password
         if ($request->has('password')) {
             $request->validate([

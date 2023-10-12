@@ -29,6 +29,19 @@
     </button>
     </form>
     {{-- change name end --}}
+    {{-- change job_title  --}}
+    <form action="{{route("profile.update",$user->id)}}" method="post" class="container mx-auto flex flex-col  items-start	">
+        @csrf
+        @method("PUT")
+        <h1 class="my-2 text-3xl">
+            Change Job Title : {{$user->job_title}}
+        </h1>
+        <input type="text" name="job_title" id="" class="w-5/6  border-0	 bg-white-200 shadow "  placeholder="To" value="{{old('job_title')}}">
+        <button type="submit" class="bg-green-700 text-gray-100 hover:bg-green-500 py-4 px-6 my-4">
+            Save Job Title
+        </button>
+    </form>
+    {{-- change job_title end --}}
     {{-- change Password  --}}
     <form action="{{route("profile.update",$user->id)}}" method="post" class="container mx-auto flex flex-col  items-start	">
         @csrf
