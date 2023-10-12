@@ -104,10 +104,16 @@ class BlogController extends Controller
         return $this->index();
     }
     public function like($id){
-        
-        like::create([
-            'user_id'=>auth()->user()->id,
-            'post_id'=>$id,
-        ]);
+        $like=like::Where([['user_id',auth()->user()->id],['post_id',$id]])->first();
+        if($like == null ){
+            like::create([
+                'user_id'=>auth()->user()->id,
+                'post_id'=>$id,
+            ]);
+            return redirect()->back();
+        }else{
+            $like->delete();
+            return redirect()->back();
+        }
     }
 }

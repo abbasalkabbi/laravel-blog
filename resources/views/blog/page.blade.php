@@ -19,7 +19,7 @@
         <div class="like_unlike flex flex-col justify-end 	">
             <div class="flex flex-row justify-end ">
                 <form action="{{route("blog.like",$post->id)}}"  method="POST" >
-                    
+                    @csrf
                     <button type="submit"  
                     class="bg-blue-900 font-blod uppercase text-3xl py-1	text-gray-100 w-40 	mx-1">
                     @if ($post->isliked())
