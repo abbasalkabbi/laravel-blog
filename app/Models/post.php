@@ -43,4 +43,7 @@ class post extends Model
     public function unlike(){
         return $this->hasMany(unlike::class);
     }
+    public function coments(){
+        return $this->hasMany(coment::class);
+    }
 }

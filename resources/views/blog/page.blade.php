@@ -14,6 +14,7 @@
         </div>
         {{-- author End --}}
         {{-- test --}}
+        {{-- {{dd($post->coments)}} --}}
         {{-- test End  --}}
         {{-- like and unlike --}}
         <div class="like_unlike flex flex-col justify-end 	">
@@ -98,5 +99,54 @@
         
     @endif
     {{-- end edit --}}
+    {{--  coment --}}
+    <div class="coments">
+        <h1 class="container mx-auto text-center bg-gray-600 font-blod text-6xl rounded-lg text-gray-100 py-5" >
+            Coments
+        </h1>
+        @if (Auth::user() )
+        {{-- Add -comrnt --}}
+        <form action="{{route('AddComent')}}" method="POST" class=" container mx-auto flex flex-row items-center relative my-2">
+            @csrf
+            <input type="hidden" name="post_id" value="{{$post->id}}" class="w-0">
+            <textarea name="coment_des" id="" cols="30" rows="10" class="w-full		  border-0 h-20	 bg-white-200 shadow "></textarea>
+            <button type="submit" class="bg-blue-900 px-6 h-20 absolute top-0 right-0 z-50	 font-blod text-2xl text-gray-100">Post</button>
+        </form>
+        @endif
+        {{-- end add coment --}}
+        {{-- show coment --}}
+        <ul class="container mx-auto bg-gray-300">
+            @foreach ($post->coments as $coment)
+                <li class="border-2 border-inherit w-full"></li>
+                    {{-- author --}}
+                    <div class="author flex flex-row justify-between px-2 py-2" >
+                        {{-- avatar --}}
+                        <a href="" class="flex flex-row items-center">
+                            <img  
+                            src="/avatars/{{$coment->user->avatar}}" alt=""
+                            class="w-12 rounded-full"
+                            >
+                            <span class="mx-2">
+                                {{$coment->user->name}}
+                            </span>
+                        </a>
+                        {{-- end avatar --}}
+                        {{-- creted at --}}
+                        <div class="created_at">
+                            <p>
+                                <p class=""> {{$coment->created_at->diffForHumans();}} </p>
+                            </p>
+                        </div>
+                        {{-- creted at End  --}}
+                    </div>
+                    {{-- author End --}}
+                    <p class="py-2 px-2">
+                        {{$coment->des}}
+                </li>
+            @endforeach
+        </ul>
+        {{-- show coment End  --}}
+    </div>
+    {{--  coment End  --}}
 </div>
 @endsection
