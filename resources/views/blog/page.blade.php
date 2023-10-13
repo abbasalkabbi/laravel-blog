@@ -121,7 +121,7 @@
                     {{-- author --}}
                     <div class="author flex flex-row justify-between px-2 py-2" >
                         {{-- avatar --}}
-                        <a href="" class="flex flex-row items-center">
+                        <a href="{{route('profile.show',$coment->user->id)}}" class="flex flex-row items-center">
                             <img  
                             src="/avatars/{{$coment->user->avatar}}" alt=""
                             class="w-12 rounded-full"
@@ -132,7 +132,7 @@
                         </a>
                         {{-- end avatar --}}
                         {{-- creted at --}}
-                        <div class="created_at">
+                        <div class="created_at"></div>
                             <p>
                                 <p class=""> {{$coment->created_at->diffForHumans();}} </p>
                             </p>
