@@ -24,5 +24,6 @@ Route::resource('/blog', BlogController::class);
 Route::resource('/profile', ProfileController::class);
 Auth::routes();
 Route::post('/add_coment',[ComentsController::class,'Add'])->name('AddComent');
+Route::post('/delete_coment',[ComentsController::class,'delete'])->name('deletecoment');
 
 

@@ -18,4 +18,10 @@ class ComentsController extends Controller
         ]);
         return redirect()->back();
     }
+    public function delete(Request $request){
+        $id=$request->input('id');
+        $post_id=$request->input('post_id');
+        coment::Where([['id',$id],['user_id',auth()->user()->id],['post_id',$post_id]])->delete();
+        return redirect()->back();
+    }
 }

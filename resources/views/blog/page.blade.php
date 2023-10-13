@@ -117,7 +117,7 @@
         {{-- show coment --}}
         <ul class="container mx-auto bg-gray-300">
             @foreach ($post->coments as $coment)
-                <li class="border-2 border-inherit w-full"></li>
+                <li class="border-2 border-inherit w-full">
                     {{-- author --}}
                     <div class="author flex flex-row justify-between px-2 py-2" >
                         {{-- avatar --}}
@@ -140,8 +140,26 @@
                         {{-- creted at End  --}}
                     </div>
                     {{-- author End --}}
-                    <p class="py-2 px-2">
-                        {{$coment->des}}
+                    <div class="">
+                        <p class="py-2 px-2">
+                            {{$coment->des}}
+                        </p>
+                    </div>
+                    @if(Auth::check() && Auth::user()->id == $coment->user_id)
+                    <form action="{{route('deletecoment')}}" method="POST" id="delete">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$coment->id}}">
+                    <input type="hidden" name="post_id" value="{{$coment->post_id}}">
+                    </form>
+                    <div class="but-grb flex flex-row justify-end mt-2">
+                        <button class="bg-red-900 font-blod text-lg  text-gray-100 mx-1 py-1 px-1 hover:text-gray-900 uppercase"   
+                        onclick="event.preventDefault();document.getElementById('delete').submit();"
+                        >
+                        Delete
+                        </button>
+                        <button class="bg-green-900 font-blod text-lg  text-gray-100 mx-1 py-1 px-1 hover:text-gray-900 uppercase">Edit</button>
+                    </div>
+                    @endif
                 </li>
             @endforeach
         </ul>
