@@ -23,7 +23,7 @@
                 <form action="{{route("blog.like",$post->id)}}"  method="POST" >
                     @csrf
                     <button type="submit"  
-                    class="bg-blue-900 font-blod uppercase text-3xl py-1	text-gray-100 w-40 	mx-1">
+                    class="bg-blue-900 font-bold uppercase text-3xl py-1	text-gray-100 w-40 	mx-1">
                     @if ($post->isliked())
                         liked
                     @else
@@ -34,7 +34,7 @@
                 <form action="{{route("blog.unlike",$post->id)}}"  method="POST" >
                     @csrf
                     <button type="submit"  
-                    class="bg-red-900 font-blod uppercase text-3xl py-1 	text-gray-100 w-40 mx-1"
+                    class="bg-red-900 font-bold uppercase text-3xl py-1 	text-gray-100 w-40 mx-1"
                     >
                     @if ($post->isunliked())
                         unliked
@@ -47,8 +47,8 @@
                 
             </div>
             <div class="flex flex-row justify-end ">
-                <p class="font-blod text-3xl  uppercase mx-2">like:{{$post->like->count()}}</p>
-                <p class="font-blod text-3xl uppercase"> unlike:{{$post->unlike->count()}}</p>
+                <p class="font-bold text-3xl  uppercase mx-2">like:{{$post->like->count()}}</p>
+                <p class="font-bold text-3xl uppercase"> unlike:{{$post->unlike->count()}}</p>
             </div>
         </div>
         {{-- like and unlike end --}}
@@ -67,7 +67,7 @@
     {{-- img End --}}
     {{-- des --}}
     <div class="des  container mx-auto py-6">
-        <p class="capitalize font-blod text-lg tracking-wide pb-6">
+        <p class="capitalize font-bold text-lg tracking-wide pb-6">
             {{$post->des}}
         </p>
     </div>
@@ -78,14 +78,14 @@
             <a href="{{route("blog.edit",$post->slug)}}"
                 class="
                 bg-green-700 hover:bg-gray-500 text-gray-100 hover:text-green-700 border border-green-700	
-                py-4  px-4 mt-6 mb-6 inline-block rounded-lg font-blod uppercase   text-2xl
+                py-4  px-4 mt-6 mb-6 inline-block rounded-lg font-bold uppercase   text-2xl
                 place-self-start
                 "
             >Edit Post</a>
             <a href="{{route("blog.edit",$post->slug)}}"
                 class="
                 bg-red-700 hover:bg-gray-500 text-gray-100 hover:text-red-700 border border-red-700	
-                py-4  px-4 mt-6 mb-6 inline-block rounded-lg font-blod uppercase   text-2xl
+                py-4  px-4 mt-6 mb-6 inline-block rounded-lg font-bold uppercase   text-2xl
                 place-self-start
                 "
                 onclick="event.preventDefault();
@@ -101,7 +101,7 @@
     {{-- end edit --}}
     {{--  coment --}}
     <div class="coments">
-        <h1 class="container mx-auto text-center bg-gray-600 font-blod text-6xl rounded-lg text-gray-100 py-5" >
+        <h1 class="container mx-auto text-center bg-gray-600 font-bold text-6xl rounded-lg text-gray-100 py-5" >
             Coments
         </h1>
         @if (Auth::user() )
@@ -110,7 +110,7 @@
             @csrf
             <input type="hidden" name="post_id" value="{{$post->id}}" class="w-0">
             <textarea name="coment_des" id="" cols="30" rows="10" class="w-full		  border-0 h-20	 bg-white-200 shadow "></textarea>
-            <button type="submit" class="bg-blue-900 px-6 h-20 absolute top-0 right-0 z-50	 font-blod text-2xl text-gray-100">Post</button>
+            <button type="submit" class="bg-blue-900 px-6 h-20 absolute top-0 right-0 z-50	 font-bold text-2xl text-gray-100">Post</button>
         </form>
         @endif
         {{-- end add coment --}}
@@ -152,12 +152,12 @@
                     <input type="hidden" name="post_id" value="{{$coment->post_id}}">
                     </form>
                     <div class="but-grb flex flex-row justify-end mt-2">
-                        <button class="bg-red-900 font-blod text-lg  text-gray-100 mx-1 py-1 px-1 hover:text-gray-900 uppercase"   
+                        <button class="bg-red-900 font-bold text-lg  text-gray-100 mx-1 py-1 px-1 hover:text-gray-900 uppercase"   
                         onclick="event.preventDefault();document.getElementById('delete').submit();"
                         >
                         Delete
                         </button>
-                        <button class="bg-green-900 font-blod text-lg  text-gray-100 mx-1 py-1 px-1 hover:text-gray-900 uppercase">Edit</button>
+                        <button class="bg-green-900 font-bold text-lg  text-gray-100 mx-1 py-1 px-1 hover:text-gray-900 uppercase">Edit</button>
                     </div>
                     @endif
                 </li>

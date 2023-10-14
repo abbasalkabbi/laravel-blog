@@ -8,8 +8,8 @@
     }
 </style>
 {{-- hero --}}
-<div class="hero-bg-img flex flex-col items-center capitalize text-gray-100 font-blod 	  justify-center">
-    <h1 class="text-4xl ">
+<div class="hero-bg-img flex flex-col items-center capitalize text-gray-100 font-bold 	  justify-center">
+    <h1 class="text-4xl  font-bold	">
         Welcome to my blog
     </h1>
     <a href="{{route('blog.index')}}" class="rounded-lg  border bg-gray-100 text-black text-2xl border-slate-950 p-3 mt-4">
@@ -42,7 +42,7 @@
             <p class="text-gray-500 text-sm font-bold py-5 leading-relaxed">
                 {{substr($post->des, 0, 150);}}...
             </p>
-            <a href="/blog/{{$post->slug}}" class="rounded-lg   bg-gray-700  text-2xl  text-gray-100 py-2 px-3  font-blod uppercase place-self-start hover:bg-gray-500">
+            <a href="/blog/{{$post->slug}}" class="rounded-lg   bg-gray-700  text-2xl  text-gray-100 py-2 px-3  font-bold uppercase place-self-start hover:bg-gray-500">
                 read more
             </a>
         </div>

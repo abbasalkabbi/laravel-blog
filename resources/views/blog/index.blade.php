@@ -9,7 +9,7 @@
 @if (Auth::check())
 <div class="container mx-auto py-10">
     <a href="{{route("blog.create")}}" 
-    class="rounded-lg   bg-green-700  text-2xl  text-gray-100 py-2 px-3  font-blod uppercase place-self-start hover:bg-gray-500"
+    class="rounded-lg   bg-green-700  text-2xl  text-gray-100 py-2 px-3  font-bold uppercase place-self-start hover:bg-gray-500"
     >
         Add New Post
     </a>
@@ -36,7 +36,7 @@
                 <p class="text-gray-500 text-sm font-bold py-5 leading-relaxed">
                     {{substr($post->des, 0, 150);}}...
                 </p>
-                <a href="{{route("blog.show",$post->slug)}}" class="rounded-lg   bg-gray-700  text-2xl  text-gray-100 py-2 px-3  font-blod uppercase place-self-start hover:bg-gray-500">
+                <a href="{{route("blog.show",$post->slug)}}" class="rounded-lg   bg-gray-700  text-2xl  text-gray-100 py-2 px-3  font-bold uppercase place-self-start hover:bg-gray-500">
                     read more
                 </a>
             </div>
