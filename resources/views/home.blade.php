@@ -12,7 +12,7 @@
     <h1 class="text-4xl ">
         Welcome to my blog
     </h1>
-    <a href="" class="rounded-lg  border bg-gray-100 text-black text-2xl border-slate-950 p-3 mt-4">
+    <a href="{{route('blog.index')}}" class="rounded-lg  border bg-gray-100 text-black text-2xl border-slate-950 p-3 mt-4">
         read more
     </a>
 </div>

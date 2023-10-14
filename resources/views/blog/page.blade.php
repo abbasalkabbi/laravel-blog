@@ -126,13 +126,13 @@
                             src="/avatars/{{$coment->user->avatar}}" alt=""
                             class="w-12 rounded-full"
                             >
-                            <span class="mx-2">
+                            <span class="mx-2 hover:text-gray-400">
                                 {{$coment->user->name}}
                             </span>
                         </a>
                         {{-- end avatar --}}
                         {{-- creted at --}}
-                        <div class="created_at"></div>
+                        <div class="created_at">
                             <p>
                                 <p class=""> {{$coment->created_at->diffForHumans();}} </p>
                             </p>
